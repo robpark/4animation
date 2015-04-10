@@ -9,6 +9,10 @@ div.header img {
   position: absolute;
 }
 
+div.header h4 {
+  padding: 5em;
+}
+
 div.container {
   padding: 5em;
   height: 600px;
