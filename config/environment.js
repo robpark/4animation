@@ -19,12 +19,19 @@ module.exports = function(environment) {
     }
   };
 
+  var contentSrc = "'self'";
+  var scriptSrc = "'self'";
+  var styleSrc = "'self'";
+  var objectSrc = "*";
+
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    contentSrc = "*";
+    scriptSrc = "'self' 'unsafe-eval' 'unsafe-inline' *";
+    styleSrc = "'self' 'unsafe-inline'";
+    objectSrc = "*";
   }
 
   if (environment === 'test') {
@@ -42,6 +49,17 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': scriptSrc,
+    'font-src': "'self'",
+    'connect-src': contentSrc,
+    'img-src': "'self' data:",
+    'style-src': styleSrc,
+    'media-src': "'self'",
+    'object-src': objectSrc
+  };
 
   return ENV;
 };

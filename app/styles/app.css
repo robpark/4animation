@@ -1,4 +1,16 @@
+div.header {
+  position: relative;
+}
+
+div.header img {
+  width: 50px;
+  height: auto;
+  padding: 1em;
+  position: absolute;
+}
+
 div.container {
+  padding: 5em;
   height: 600px;
   position: relative
 }
