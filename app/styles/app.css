@@ -2,7 +2,11 @@ div.header {
   position: relative;
 }
 
-div.header img {
+/* When we animate the element, it will get pulled out of its original
+place in the DOM. So any styles that we want to persist need to be
+targeted directly at the element itself, without depending on
+context. */
+.header-img {
   width: 50px;
   height: auto;
   padding: 1em;
@@ -19,12 +23,19 @@ div.container {
   position: relative
 }
 
-div.container img {
+.splash-img {
   padding: 1em;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+
+  /* The fly-to animation uses translate, and doesn't know how to
+     account for an element that already has a preexisting
+     translate. */
+  /* transform: translate(-50%, -50%) */
 }
 
+#animation > div {
+    border: 1px solid blue;
+}
